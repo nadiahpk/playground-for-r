@@ -4,7 +4,7 @@ Also useful, R for Octave users: https://cran.r-project.org/doc/contrib/R-and-oc
 # Robin Lovelace's demonstration of nls
 http://robinlovelace.net/2013/10/23/nls-demonstation.html
 
-## Basic curve fitting
+## basic curve fitting
 
 ```R
 > len <- 24
@@ -27,3 +27,25 @@ http://robinlovelace.net/2013/10/23/nls-demonstation.html
 
 ![alt text](https://github.com/nadiahpk/playground-for-r/blob/master/ch2-nls/fit.png?raw=true "Fit to x cubed")
 
+Measure fit
+```R
+> (RSS.p <- sum(residuals(m)^2))  # Residual sum of squares
+[1] 0.06333526
+> (TSS <- sum((y - mean(y))^2))  # Total sum of squares
+[1] 1.831651
+> 1 - (RSS.p/TSS)  # R-squared measure
+[1] 0.9654218
+```
+
+## fitting to a pre-defined function
+
+```R
+> exp.eq <- function(x, a, b) {
++     exp(1)^(a + b * sin(x^4))
++ }
+> m.sinexp <- nls(y ~ exp.eq(x, a, b), data = df, start = list(a = 1, b = 1))
+> plot(x,y)
+> lines(s,predict(m.sinexp, list(x=s)), col=2)
+```
+
+![alt text](https://github.com/nadiahpk/playground-for-r/blob/master/ch2-nls/fit2.png?raw=true "Fit to more complex equation")
