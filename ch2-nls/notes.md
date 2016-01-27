@@ -25,5 +25,5 @@ http://robinlovelace.net/2013/10/23/nls-demonstation.html
 > lines(s, predict(m, list(x=s)), col="green")
 ```
 
-![alt text](https://github.com/nadiahpk/playground-for-r/master/ch2-nls/fit.png "Fit to x cubed")
+![alt text](https://github.com/nadiahpk/playground-for-r/blob/master/ch2-nls/fit.png?raw=true "Fit to x cubed")
 
